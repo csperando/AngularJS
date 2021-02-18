@@ -1,7 +1,7 @@
 # AngularJS
 
-This is a repository for the Coursera AngularJS course:
-https://www.coursera.org/learn/single-page-web-apps-with-angularjs
+This is a repository for the Coursera <a href="https://www.coursera.org/learn/single-page-web-apps-with-angularjs">AngularJS course</a>
+
 
 
 ## Week 1
