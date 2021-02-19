@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="filterApp">
   <head>
     <title>Testing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +7,15 @@
     <script src="app.js"></script>
   </head>
 
-  <body ng-app="testApp">
+  <body ng-controller="filterAppController">
     <h1>Angular JS testing page</h1>
 
-    <div ng-controller="testAppController">
-      <h3>Enter a string below:</h3>
-      <input type="text" ng-model="string">
-      <p>{{sendMessage()}}</p>
-
-    </div> <!--- end controller div --->
+    <div>
+      <h3>Enter a string below (letters only! no symbols or punctuation):</h3>
+      <input type="text" ng-model="string" ng-keyup="makePigString()">
+      <h3>Pig Latin translation:</h3>
+      <p>{{pigString}}</p>
+    </div>
 
   </body>
 </html>
