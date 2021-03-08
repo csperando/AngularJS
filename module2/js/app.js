@@ -34,8 +34,20 @@
         quantity: 10
       },
       {
-        name: 'cookies',
-        quantity: 10
+        name: 'eggs',
+        quantity: 12
+      },
+      {
+        name: 'bacon',
+        quantity: 4
+      },
+      {
+        name: 'peanut butter',
+        quantity: 1
+      },
+      {
+        name: 'apples',
+        quantity: 6
       }
     ];
 
