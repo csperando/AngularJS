@@ -1,32 +1,38 @@
 <!doctype html>
-<html lang="en" ng-app="filterApp">
+<html lang="en">
   <head>
     <title>Testing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
   </head>
 
-  <body ng-controller="filterAppController">
-    <h1>Angular JS testing page</h1>
+  <body>
 
-    <div>
-      <h3>Practice with promises</h3>
-      <p>promisses are objects created with the $q service</p>
-      <input type="text" placeholder="items" ng-model="itemString">
-      <input type="text" placeholder="quantity" ng-model="quantityString">
-      <button ng-click="addItem()">add items</button>
+    <div class="main-content"  ng-app="testApp">
 
-      <div>
-        <ul>
-          <li ng-repeat="item in items">
-            <span>{{item.quantity}} {{item.name}}   </span>
-            <button ng-click="removeItem($index)">remove</button>
-          </li>
-        </ul>
+      <div ng-controller="controller1" id="div1" class="controller-div">
+        <h3>Controller 1</h3>
+        <div>
+          <input type="text" placeholder="string1" ng-model="string1">
+          <button ng-click="action()">submit</button>
+          <p>{{string1}}</p>
+        </div>
       </div>
 
-    </div>
 
+      <div ng-controller="controller2" id="div2" class="controller-div">
+        <h3>Controller 2</h3>
+        <!-- list items from array here -->
+        {{string2}}
+      </div>
+
+      <!-- <div class="service-div">
+        <h3>Service</h3>
+
+      </div> -->
+
+    </div>
   </body>
 </html>
