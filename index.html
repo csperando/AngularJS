@@ -11,10 +11,21 @@
     <h1>Angular JS testing page</h1>
 
     <div>
-      <h3>Enter a string below (letters only! no symbols or punctuation):</h3>
-      <input type="text" ng-model="string" ng-keyup="makePigString()">
-      <h3>Pig Latin translation:</h3>
-      <p>{{pigString}}</p>
+      <h3>Practice with promises</h3>
+      <p>promisses are objects created with the $q service</p>
+      <input type="text" placeholder="items" ng-model="itemString">
+      <input type="text" placeholder="quantity" ng-model="quantityString">
+      <button ng-click="addItem()">add items</button>
+
+      <div>
+        <ul>
+          <li ng-repeat="item in items">
+            <span>{{item.quantity}} {{item.name}}   </span>
+            <button ng-click="removeItem($index)">remove</button>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
   </body>

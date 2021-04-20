@@ -3,60 +3,55 @@
 
   angular.module('filterApp', [])
     .controller('filterAppController', filterAppController)
-    .filter('pig', PigLatinFilterFactory)
-    .filter('custom', CustomFilterFactory);
+    .service('ListService', ListService)
+    .service('HealthService', HealthService);
 
   // protect from minifier
-  filterAppController.$inject = ['$scope', 'customFilter', 'pigFilter'];
+  filterAppController.$inject = ['$scope', 'ListService', 'HealthService'];
+  function filterAppController($scope, ListService, HealthService) {
+    $scope.itemString = "";
+    $scope.quantityString = "";
+    $scope.items = []
 
-  function filterAppController($scope, customFilter, pigFilter) {
-    $scope.string = "";
-    $scope.newString = "";
-    $scope.pigString = "";
-
-    $scope.makeString = function() {
-      //console.log('test');
-      $scope.newString = customFilter($scope.string);
+    $scope.addItem = function() {
+      ListService.addItem($scope.itemString, $scope.quantityString)
+      HealthService.healthCheck(newListItem.name, newListItem.quantity)
+      $scope.itemString = "";
+      $scope.quantityString = "";
     }
+    // in the middle of making two controllers and rewriting the add/removeItem
+    // functions in the listService
 
-    $scope.makePigString = function() {
-      $scope.pigString = pigFilter($scope.string);
+    $scope.removeItem = function(i) {
+      $scope.items.splice(i, 1);
     }
 
   }
 
-  function CustomFilterFactory() {
-    return function(input) {
-      input = input || ""; // catch missing input
-      return input.toUpperCase();
-    };
-  }
+  function ListService() {
+    var service = this;
 
-  function PigLatinFilterFactory() {
-    return function(input) {
-      input = input || "";
+    var items = [];
 
-      var words = getWordsArray(input);
-      var pigWords = words;
-      for (var i = 0; i < words.length; i++) {
-        pigWords[i] = toPig(words[i]);
+    service.addItem = function(itemName, itemQuantity) {
+      var newItem = {
+        name: itemName,
+        quantity: itemQuantity
       }
+      items.push(newItem);
+    };
 
-      input = pigWords.toString().replace(/,/g, ' ').toUpperCase();
-
-      return input;
+    service.getItems = function() {
+      return items;
     };
   }
 
-  function getWordsArray(string) {
-    var words = string.split(' ');
-    return words;
-  }
-
-  function toPig(string) {
-    string = string || "";
-    string = string.slice(1) + string[0] + 'ay';
-    return string;
+  function HealthService() {
+    var service = this;
+    var items = [];
+    service.healthCheck = function(itemName, quantity) {
+      console.log("health service");
+    };
   }
 
 })();
